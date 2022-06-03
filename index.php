@@ -13,6 +13,18 @@
     <header>
         <h1>Dictionnaire des pays</h1>
     </header>
+    <section class="create_database">
+        <h2>Création de la base de données</h2>
+        <?php
+        include_once("upload_file.php");
+        ?>
+    </section>
+    <section class="upload_flags">
+        <h2>Upload des drapeaux venant d'un fichier zip</h2>
+        <?php
+        include_once("import_img.php");
+        ?>
+    </section>
     <section class="search">
         <h2>Recher un pays</h2>
         <?php
