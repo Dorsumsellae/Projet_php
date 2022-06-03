@@ -70,7 +70,7 @@
             $file_type = $file['type'];
             $file_ext = explode('.', $file_name);
             $file_ext = strtolower(end($file_ext));
-            $allowed = array('jpg', 'jpeg', 'png', 'gif');
+            $allowed = array('jpg', 'jpeg', 'png', 'gif', 'svg');
             if (in_array($file_ext, $allowed)) {
                 if ($file_error === 0) {
                     if ($file_size <= 2097152) {
@@ -81,6 +81,10 @@
                             $drapeau = file_get_contents($file_destination);
                             $sql = $GLOBALS['dbh']->prepare("UPDATE pays SET drapeau = ? WHERE code = ?");
                             $sql->execute([$drapeau, $code]);
+                            if (unlink($file_destination)) {
+                            } else {
+                                echo 'Error during delete file';
+                            }
                         } else {
                             echo 'Not Uploaded';
                         }
